@@ -1,0 +1,174 @@
+<div class="footer" id = "footer">
+    <div class="footer-left-middle-shell" style="display:inline-block">
+      <div class="addon">
+        <p class="mviewed" ><a href="/blog/mostviewed" >Most Viewed</a></p>
+        <p style="margin-top: 3%;" ><a href="/blog/mostliked">Most Liked</a></p>
+        <p style="margin-top: 3%;"><a href="/about">About Us</a></p>
+        <p style="margin-top: 3%;" ><a href="/support" >Support</a></p>
+      </div>
+      <div class="connect-us">
+        <div class="connect-with-us-title" > Connect With Us: </div>
+        <a href="https://fb.me/booksyourbrain"><i class="fa fa-facebook" aria-hidden="true" style="font-size: 30px; color:floralwhite; margin-left: 30%;"></i></a>
+        <a href="https://www.instagram.com/booksyourbrain"> <i class="fa fa-instagram" aria-hidden="true"  style="font-size: 30px; color:floralwhite; margin-left: 10px;"></i></a>
+        <a href="/#query" <i class="fa fa-envelope" aria-hidden="true" style="font-size: 30px; color:floralwhite; margin-left: 10px; margin-right:15px; padding-bottom: 10px;"></i></a>
+        <h2 class="copyright">Copyright@2019 | All Rights Reserved</h2>
+      </div>
+    </div>
+    <%if(user){if(user.subscribed == "0"){%>
+      <div class="subscribe"><a href="/users/subscribe"><button class="btn btn-large btn-danger subscribe-button">SUBSCRIBE</button></a>
+    <%}else{%>
+      <div class="subscribe"><a href="#footer"><button class="btn btn-large btn-primary subscribe-button">SUBSCRIBED</button></a>
+      <%}}else{%>
+        <div class="subscribe"><a href="/users/login"><button class="btn btn-large btn-danger subscribe-button">SUBSCRIBE</button></a>
+      <%}%>
+    <a  href="#footer"><div class="ask" onclick="askSomething()">ASK US <i class="fa fa-paper-plane ask-icon" style="color:black;"  aria-hidden="true"></i></div></a>
+    </div>
+</div>
+<div class="ask-us-form">
+  <span style="float:right; margin-right:5px; margin-top:5px"><a href="#footer" onclick="close_ask_form()"><i class="fa fa-window-close"></i></a></span>
+  <form method="POST" action = "/users/query" class="ask-form">
+    <div class = "form-group upper">
+      <input type = "email"  name = "email" class="form-control" placeholder = "Enter your email address.." style="background-color:rgba(255, 255, 255, 0.7);  color:black; font-family: Arial" id="email" required>
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" name="query" style="background-color:rgba(255, 255, 255, 0.7); color:black; font-family: Arial" placeholder="Type Your query Here..." required></textarea>
+    </div>
+    <button type = "submit"  class="btn btn-small btn-warning">SUBMIT</button>
+  </form>
+</div>
+</div>
+</div>
+<script>
+  var prevScrollpos = window.pageYOffset;
+  window.onscroll = function() {
+    var currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+      document.querySelector(".bar1").style.top = "0";
+      document.querySelector(".mast").style.top = "0";
+      document.querySelector(".search-input2").style.top = "0";
+    } else {
+      document.querySelector(".bar1").style.top = "-52px";
+      document.querySelector(".mast").style.top = "-52px";
+      document.querySelector(".search-input2").style.top = "-52px";
+    }
+    prevScrollpos = currentScrollPos;
+  }
+
+  function close_ask_form(){
+      document.querySelector(".ask").style.display = "block";
+      document.querySelector(".ask-us-form").style.display = "none";
+  }
+  function askSomething(){
+      document.querySelector(".ask").style.display = "none";
+      document.querySelector(".ask-us-form").style.display = "block";
+  }
+
+  function myfunction(){
+   var mast = document.querySelector("table");
+      mast.style.backgroundColor = "red";
+  }
+
+  var flag = 0;
+  var flag1 = 0;
+  function myfunction1(){
+   var table= document.querySelector(".mast");
+
+      var toggle= document.querySelector(".toggle");
+      if(flag % 2 ==0){
+        table.style.display="block";
+        table.style.overflow="hidden";
+        table.classList.add("animate");
+        table.classList.remove("reverseAnimate");}
+      else{
+          table.style.overflow="hidden";
+          table.classList.add("reverseAnimate");
+          table.classList.remove("animate");
+          setTimeout(function(){
+              table.style.display="none";
+          },200);
+      }
+      flag++;
+      if(flag == 10 )
+        flag = 0;
+  }
+
+  function chgb(){
+    var notvalid = document.querySelector(".notvalid");
+    notvalid.textContent = "You Need To Log In First";
+  }
+  function showhide(){
+    document.querySelector('.sc').style.display="block";
+    document.querySelector('.sc').style.overflow="hidden";
+    var sidebar = document.querySelector(".sidebar");
+
+      var toggle= document.querySelector(".show-hide-arrow");
+      if(flag1 % 2 ==0){
+        sidebar.style.display="block";
+        sidebar.style.overflow="hidden";
+        sidebar.classList.add("animate2");
+        sidebar.classList.remove("reverseAnimate2");
+        toggle.innerHTML = ' <a><i class="fa fa-angle-double-left" aria-hidden="true" style="color:white;font-size:35px;">';}
+      else{
+          sidebar.style.overflow="hidden";
+          sidebar.classList.add("reverseAnimate2");
+          sidebar.classList.remove("animate2");
+          toggle.innerHTML = '<a><i class="fa fa-angle-double-right" aria-hidden="true" style="color:black;font-size:35px;">';
+          toggle.style.display="none";
+          setTimeout(function(){
+              document.querySelector('.sc').style.display="none";
+              toggle.style.display="block";
+          },500);
+
+
+      }
+      flag1++;
+      if(flag1 == 10 )
+        flag1 = 0;
+      }
+var count = 1;
+
+function slideshow(){
+    if(count >= 4){
+      var slide1 = ".slide-" + 4;
+      var slide2 = ".slide-" + 1;
+      count = 0;
+    }
+    else {
+      var slide1 = ".slide-" + count;
+      var slide2 = ".slide-" + (count + 1);
+    }
+    var obj1 = document.querySelector(slide1);
+    try{
+    obj1.classList.add("fadeout-slides");
+    obj1.style.display = "none";
+    var obj2 = document.querySelector(slide2);
+    obj2.style.display = "block";
+  }
+  catch(err){}
+    count = count + 1;
+    console.log(count);
+}
+setInterval(function(){
+  slideshow();
+},5000);
+</script>
+<script src="/assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="/assets/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="/assets/vendor/bootstrap/js/popper.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="/assets/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="/assets/vendor/daterangepicker/moment.min.js"></script>
+<script src="/assets/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="/assets/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="/assets/js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

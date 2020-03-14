@@ -1,0 +1,33 @@
+<% include partials/header%>
+<div class="blogger">
+    <div class="fluid-container">
+    <div class="full">
+    <div class="saareblogs" style="margin-bottom:90px; padding-top:20px;">
+		<%if(!length){%>
+			<div class="no-result" style="width:100%;">
+				<div style="padding-top:50px;font-family:Cambria,Georgia,serif;padding-left:5%;">Sorry!</div>
+				<div class="text1"  style="display:inline-flex; width:100%;">
+					<img src="/images/panda.jpg">
+					<div  class="nothing" style=" width:100%;font-family:Cambria,Georgia,serif;padding-bottom:100px;padding-top:90px;line-height:1;">Nothing Found!!</div>
+				</div>
+			</div>
+		<%}else{ for(var i = results.length - 1; i >= 0; i-- ){%>
+      <div class="blog1 blog1-part" style="padding-bottom: 0px;" >
+        <div class="blog">
+          <h1> <%=results[i].title%></h1>
+          <div class="green-partition"></div>
+          <p><%= results[i].body%></p></div>
+          <div class="vl"><div><i class="fa fa-eye" aria-hidden="true" style="color:black;font-size:25px;"> </i> <span class="views"><%=results[i].views %></span></div>  <div class="likes"> <i class="fa fa-thumbs-up" aria-hidden="true"style="color:black; font-size:25px;"></i>
+    <%=results[i].likes%></div></div>
+		<% if(i <= count){%>
+      <p class="linktoread"> <a href="<%= "/blog/" + results[i].postn + "/viewsbadao"%>">   continue reading.... </a> </p>
+		<%}else {%>
+			<p class="linktoread"> <a href="<%= "/publicpost/" + results[i].postn + "/viewsbadao"%>">   continue reading.... </a> </p>
+		<%}%>
+     </div>
+<%}}%>
+</div>
+</div>
+</div>
+   </div>
+<% include partials/footer%>

@@ -1,0 +1,56 @@
+<% include partials/header %>
+<div class="fluid-container" >
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('/images/together.jpg');">
+      <div class="container error-log" >
+        <% Object.values(errors).forEach(function(error){ %>
+          <div class="alert alert-danger">
+            <p><%= error.msg%></p>
+          </div>
+            <% });%>
+          </div>
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" action="/users/signup" method="post">
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						SIGN UP
+					</span>
+          <div class="wrap-input100 validate-input" data-validate = "Enter Your Full Name Here...">
+						<input class="input100" type="username" name="username" placeholder="Username">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter Email Here...">
+						<input class="input100" type="email" name="email" placeholder="Email">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" name="pass1" placeholder="Password">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+          <div class="wrap-input100 validate-input" data-validate="Confirm Password">
+						<input class="input100" type="password" name="pass2" placeholder="Confirm Password">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							SIGN IN
+						</button>
+					</div>
+					<div class="already-account" style="margin-top:10px;">
+							<p style="text-align:center; color:white; font-size:16px;">Already have an account? <a href="/users/login" style="font-size:16px; color:blue;">Log In</a><p/>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div id="dropDownSelect1"></div>
+</div>
+<% include partials/footer %>

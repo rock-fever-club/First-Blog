@@ -1,0 +1,26 @@
+<%include partials/header%>
+	<div class="fluid-container publicpostpage">
+		<div class="container2 ">
+			   <div class="post">
+					 	<% console.log(no); for(var i = title.length - 1 - (5*(no-1)) ; i > title.length - 1 - (5*no); i-- ){if(i >= 0){%>
+				       <div class="Post1" >
+				       <h5> <%=title[i]%></h5>
+							  <div class="ekline">
+									<img src="<%="/images/p" +postn[i]+ ".jpg"%>">
+				        <div class="bada"><p><%= body[i]%></p></div>
+							</div>
+							<div class="vl"><div><i class="fa fa-eye" aria-hidden="true" style="color:black;font-size:25px;"> </i> <span class="views"><%=views[i] %></span></div>  <div class="likes"> <i class="fa fa-thumbs-up" aria-hidden="true"style="color:black; font-size:25px;"></i>
+				   <%=likes[i]%></div></div>
+					 		<p class="linktoread"> <a href="<%= "/publicpost/" + postn[i] + "/viewsbadao"%>" style="font-size:18px;">   continue reading.... </a> </p>
+							<div class="hbar"></div>
+				      </div>
+				 <%}}%>
+			   </div>
+				 <div class="bottom-nav" style="margin-top: 30px;">
+					 <% for(var i = 1; i <= len; i++){%>
+						 <div class="bottom-nav-button" <%if(i == no){%>style="background-color:red;"<%}%>><a href="<%= '/publicpost/page/' + i%>"><%=i%></a></div>
+					 <%}%>
+				 </div>
+			</div>
+	</div>
+<%include partials/footer%>

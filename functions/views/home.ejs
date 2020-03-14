@@ -1,0 +1,58 @@
+<% include partials/header%>
+<div class="main fluid-container">
+  <div  class="section-1">
+    <a href="<%='/blog/' + blog1.postn %>"><div class="option1">Recent</div></a>
+    <a  href="/blog/mostViewed"><div class="option2">Most Viewed</div></a>
+    <a href="/blog/mostLiked"><div class="option3">Most Liked</div></a>
+  </div>
+  <div class="section-2">
+    <div class="image">
+      <img src="/images/book.png">
+    </div>
+    <div class="search-bar">
+      <form class="search-input" action="/search/query" method="post">
+        <div class="markline">Explore the world of interesting blogs and book summaries</div>
+        <input type="text"  name="query" placeholder = "Search any blog or book summary of your choice!">
+        <button type="submit"><i class="fa fa-search" style="font-size:26px;"></i></button>
+      </form>
+    </div>
+    <a href="/blogs/page/1"><button type="button" class="explore">Explore</button></a>
+    <div style="padding-bottom:50px;"></div>
+  </div>
+</div>
+<div class="writer-box">
+  <div class="writer">
+    <h6>We At</h6>
+    <h5> BooksYourBrain</h5>
+    <p> We, writers at BooksYourBrain are highly<br>
+    enthusiastic about writing new content. We started it as<br>
+    a project but now we are doing our best to provide you some quality content!</p>
+  </div>
+  <div class="slideshow">
+    <div class="slide-1">
+        <img src="/images/boring.png">
+        <div>
+          Are you getting bored? Check out new blogs and book summaries!
+        </div>
+    </div>
+    <div class="slide-2">
+        <img src="/images/unique.png">
+        <div>
+          Reading is a good habit.  Start here!
+        </div>
+    </div>
+    <div class="slide-3">
+      <img src="/images/creativity.png">
+      <div>
+        Read new things and enhance your creativity and imagination!
+      </div>
+    </div>
+    <div class="slide-4">
+      <img src="/images/learning.png">
+      <div>
+        Read something new Learn something new!
+      </div>
+    </div>
+  </div>
+</div>
+<% include partials/footer%>

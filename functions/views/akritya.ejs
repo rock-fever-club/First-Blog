@@ -1,0 +1,116 @@
+<html>
+	<head>
+		<title>AKRITYA</title>
+		<style>
+		body{
+			background-image:url("/images/lifegoals.png");
+			background-size:40% 100%;
+			background-repeat: no-repeat;
+		}
+			.container{
+				width:60%;
+				float:right;
+			}
+			.status{
+				text-align:center;
+				font-size:30px;
+				font-family:Baskerville,Baskerville Old Face,Hoefler Text,Garamond,Times New Roman,serif;
+				color:green;
+				font-weight:bold;
+				margin-top:7%;
+			}
+			.count{
+				color:red;
+				text-align: center;
+				font-size: 20px;
+			}
+			.club{
+				text-align:center;
+				padding-top:20px;
+				padding-bottom:20px;
+				font-size:35px;
+				color:white;
+				background-color:rgba(130, 20, 200, 0.5);
+				font-family:Baskerville,Baskerville Old Face,Hoefler Text,Garamond,Times New Roman,serif;
+				font-weight: bold;
+				background-color:;
+			}
+			.purpose{
+				text-align:center;
+				margin-top:30px;
+				font-size:30px;
+			}
+			.button{
+				margin-left:20%;
+				padding:10px;
+				font-size:22px;
+				color:white;
+				font-weight:bold;
+				background-color:rgb(102, 200, 90);
+				border:0px solid white ;
+				border-radius:10px;
+				margin-top:8%;
+			}
+		</style>
+	</head>
+	<body >
+		<div class="container">
+			<div class="club">SAE NIT KURUKSHETRA</div>
+			<div class="purpose">Acceleration-Time Display</div>
+			<div class="status">
+			</div>
+			<div class="count">
+				<p class="title"></p>
+				<p class = "count_value"></p>
+			</div>
+			<a href="/reset_acc"><button class="button">RESTART</button></a>
+			<p>Steps: 1)Press this restart button only after(10s) nodemcu is restarted!!<br> 2)Now press the restart button of server module<br> 3)Now press the restart button of client module</p>
+		</div>
+		<script>
+			var wooh = setInterval(()=>{
+					var xmlhttp = new XMLHttpRequest();
+					console.log("halla");
+					var data;
+					//console.log("amit");
+					xmlhttp.open("GET", "https://booksyourbrain.in/getdata", true);
+					xmlhttp.onreadystatechange = function(){
+						if(xmlhttp.readyState == 4){
+							if(xmlhttp.status == 200){
+								//console.log(xmlhttp.responseText);
+								var data =  xmlhttp.responseText;
+								var list = data.split(":");
+								console.log(list);
+								if(list[0] == "-1"){
+									document.querySelector(".status").textContent = "Car is ready to start!!";
+									document.querySelector(".title").textContent = "";
+									document.querySelector(".count_value").textContent = "";
+								}
+								else if(list[0] == "0"){
+								document.querySelector(".status").textContent = "Car has crossed start point!!";
+								document.querySelector(".title").textContent = "";
+								document.querySelector(".count_value").textContent = "";
+							}
+							else {
+								document.querySelector(".status").textContent = "Car has reached finished point!!";
+								document.querySelector(".title").textContent = "Time Taken";
+								document.querySelector(".count_value").textContent = list[1];
+								clearInterval(wooh);
+							}
+							}
+							else{
+								console.log("req has failed");
+							}
+						}
+					};
+					xmlhttp.send(null);
+			}, 100);
+
+
+		</script>
+		<script
+		  src="https://code.jquery.com/jquery-3.4.1.js"
+		  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		  crossorigin="anonymous">
+		</script>
+	</body>
+</html>

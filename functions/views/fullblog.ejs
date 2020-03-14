@@ -1,0 +1,56 @@
+<% include partials/header %>
+  <div class="fluid-container fullblog" >
+    <iframe src="<%='/blog/fullblog/' + blog.postn%>"  width="100%" height="700px"></iframe>
+    <div class="container fullblogc">
+
+    </div>
+
+<!---comment section--->
+
+    <div class="header-likes-comments">
+      <%if(user){ if(!active){%>
+      <div><a href="<%="/blog/" + blog.postn + "/" + "likesBadao"%>"><i class="fa fa-thumbs-up" aria-hidden="true" onclick="chgb()"></i>
+      </a><%= blog.likes%></div>
+      <%}else{%>
+        <div><i class="fa fa-thumbs-up" aria-hidden="true" style="color:blue;"></i>
+        <%= blog.likes%><p class="valid"></p></div>
+      <%}%>
+      <div class="comments"><i class="fa fa-comments" aria-hidden="true" style="color:black; padding-left:10%;"></i> <%= blog.comments%></div>
+    <%} else{%>
+      <div><i class="fa fa-thumbs-up" aria-hidden="true" onclick="chgb()"></i>
+      <%= blog.likes%></div>
+      <div class="comments"><i class="fa fa-comments" aria-hidden="true" style="color:black; padding-left:10%;"></i> <%= blog.comments%></div>
+      <p class="notvalid"></p>
+    <%}%>
+    </div>
+    <div class="Comments">
+      <% if(comments.length != 0){for(var i = comments.length - 1;i >= 0; i--){%>
+        <div class="comment">
+          <div  class="comment-gol">
+          <div class="username"><%=comments[i].username%><span class="delete-icon" style="float:right;padding-right:10px;padding-top:10px;"><% if(user && comments[i].email == user.email){%><a href = "<%='/deleteComment/' + blog.postn + '/' + comments[i].username + '/' + docid[i]%>"><i class="fa fa-trash-o" aria-hidden="true" style="color:black; font-size:30px;"></i></a><%}%></span></div>
+          <div class="comment-body"><%=comments[i].body%>
+          <p class="comments-body-time" style="margin-top:0px;padding-top:5px;"><%=comments[i].time%><span style="padding-left:20px;"><%=comments[i].date%></span></p>
+        </div>
+        </div>
+      </div>
+      <%}}else{%>
+        <p class="nocomment">NO COMMENTS YET!! BE THE FIRST TO COMMENT</p>
+        <% }%>
+      </div>
+
+      <% if(user) {%>
+      <div class="comment-box">
+        <form method="POST" action = "<%="/blog/" + blog.postn + "/" + "updateComment"%>">
+          <textarea class="form-control" name="newComment" value="Enter Your Comment Here..." required></textarea>
+          <button type = "submit"  class="btn btn-small btn-warning">SUBMIT</button>
+        </form>
+      </div>
+
+    <%}else{%>
+      </div>
+      <div class="nonusercomment"><a href="/users/login" class="btn btn-small btn-success">COMMENT</a><p style="color:white; padding-top:15px;">You need to login to comment</p></div>
+    <%}%>
+
+  </div>
+
+<% include partials/footer %>

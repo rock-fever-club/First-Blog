@@ -1,0 +1,23 @@
+{
+  "hosting": {
+    "public": "public",
+    "rewrites":[{
+      "source":"**",
+      "function":"app"
+      }],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "headers": [
+     {
+       "source" : "**/*.@(jpg|jpeg|gif|png|css|js|html)",
+       "headers" : [ {
+           "key" : "Cache-Control",
+           "value" : "max-age=1000000" //1 week+
+       } ]
+     }
+   ]
+  }
+}

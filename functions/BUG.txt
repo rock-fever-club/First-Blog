@@ -1,0 +1,5 @@
+1) new posts mein comment aur length ka collection nhi ban rha hai..
+2) forget password ka daalna hai
+4) mobile viiew mein tilt pe main nav pura nhi aa rha
+5) background-image ko mobile view ke hisaab se adjust
+4) Subscribe for updates

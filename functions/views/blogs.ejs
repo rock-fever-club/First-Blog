@@ -1,0 +1,28 @@
+<% include partials/header%>
+<div class="blogger">
+    <div class="fluid-container">
+    <div class="full">
+    <div class="saareblogs">
+
+  <% console.log(no); for(var i = title.length - 1 - (5*(no-1)) ; i > title.length - 1 - (5*no); i-- ){if(i >= 0){%>
+      <div class="blog1" >
+        <div class="blog">
+          <h1> <%=title[i]%></h1>
+          <div class="green-partition"></div>
+          <p><%= body[i]%></p></div>
+          <div class="vl"><div><i class="fa fa-eye" aria-hidden="true" style="color:black;font-size:25px;"> </i> <span class="views"><%=views[i] %></span></div>  <div class="likes"> <i class="fa fa-thumbs-up" aria-hidden="true"style="color:black; font-size:25px;"></i>
+    <%=likes[i]%></div></div>
+      <p class="linktoread"> <a href="<%= "/blog/" + postn[i] + "/viewsbadao"%>">   continue reading.... </a> </p>
+     </div>
+
+<%}}%>
+
+     </div>
+     </div></div>
+     <div class="bottom-nav" style="margin-top: 30px;">
+       <% for(var i = 1; i <= len; i++){%>
+         <div class="bottom-nav-button" <%if(i == no){%>style="background-color:red;"<%}%>><a href="<%= '/blogs/page/' + i%>"><%=i%></a></div>
+       <%}%>
+     </div>
+   </div>
+<% include partials/footer%>
