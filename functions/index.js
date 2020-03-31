@@ -34,7 +34,7 @@ var nodemailer = require("nodemailer");
   saveUninitialized: true,
   cookie: { secure: false ,
           maxAge: 86400000}
-}));*/
+}));
 
 const firebaseConfig = {
   apiKey: "AIzaSyCDzfXOOIzlCy8jk10WcM-Ix6cnAkIe32g",
@@ -45,7 +45,17 @@ const firebaseConfig = {
   messagingSenderId: "166848493036",
   appId: "1:166848493036:web:5d80e02fa073a7a9"
 };
-
+*/
+const firebaseConfig = {
+  apiKey: "AIzaSyAC2bOkvmHvjoEGJ5hU43xPB5wEwg34RDo",
+  authDomain: "bloggers-94c4d.firebaseapp.com",
+  databaseURL: "https://bloggers-94c4d.firebaseio.com",
+  projectId: "bloggers-94c4d",
+  storageBucket: "bloggers-94c4d.appspot.com",
+  messagingSenderId: "591148768677",
+  appId: "1:591148768677:web:ff7a7dca4e0aecb9c1dc4c",
+  measurementId: "G-V8PNMT9Y1R"
+};
 firebaseConfig.credential = admin.credential.cert(serviceAccount);
 
 //Firebase app initialization
